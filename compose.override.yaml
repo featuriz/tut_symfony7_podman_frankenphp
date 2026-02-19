@@ -1,12 +1,13 @@
 ---
 # Development environment override
+name:  fzcms_frankenphp_dev
 services:
   php:
     build:
       context: .
       target: frankenphp_dev
     container_name: fzcms_frankenphp_dev
-    image: ${IMAGES_PREFIX}:${IMAGES_TAG}
+    image: fzcms_frankenphp_dev:7.4
     volumes:
       - ./:/app
       - ./frankenphp/Caddyfile:/etc/frankenphp/Caddyfile:ro
@@ -16,7 +17,7 @@ services:
       #- /app/vendor
     environment:
       FRANKENPHP_WORKER_CONFIG: watch
-      MERCURE_EXTRA_DIRECTIVES: demo
+      # MERCURE_EXTRA_DIRECTIVES: demo
       # See https://xdebug.org/docs/all_settings#mode
       XDEBUG_MODE: "${XDEBUG_MODE:-off}"
       APP_ENV: "${APP_ENV:-dev}"
@@ -24,6 +25,8 @@ services:
       # Ensure that host.docker.internal is correctly defined on Linux
       - host.docker.internal:host-gateway
     tty: true
+    ports:
+      - "8080:80"
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
 

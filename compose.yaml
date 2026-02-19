@@ -1,8 +1,8 @@
-name:  fzcms_frankenphp
-
+---
 services:
   php:
     restart: unless-stopped
+    image: fzcms_frankenphp:7.4
     environment:
       SERVER_NAME: :80
       # DEFAULT_URI: http://${SERVER_NAME:-localhost}:${HTTP_PORT:-8080}
@@ -21,8 +21,8 @@ services:
       - .:/app
       - ./frankenphp/caddy_data:/data
       - ./frankenphp/caddy_config:/config
-    ports:
-      - "8080:80"
+    # ports:
+      # - "8080:80"
     networks:
       - podman_network
 
