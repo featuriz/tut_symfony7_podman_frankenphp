@@ -25,6 +25,7 @@ This is a DEMO project for https://github.com/dunglas/symfony-docker
 ## FrankenPHP
 
 - https://github.com/dunglas/symfony-docker/blob/main/README.md
+- https://github.com/dunglas/symfony-docker/blob/main/docs/existing-project.md
 
 ### What I have done
 
@@ -96,4 +97,11 @@ EXIT;
 ## WARNING: To clean everything
 
 - !IMPORTANT: First run all the required containers
-  `podman system prune -a` # This wont remove the running containers and images.
+- `podman system prune -a` # This wont remove the running containers and images.
+
+## WORKER
+
+- https://github.com/dunglas/symfony-docker/commit/330ea245a1e0cb7390adde68167b922d393ba25a
+- frankenphp/Caddyfile : worker {}
+- compose.override.yaml : FRANKENPHP_WORKER_CONFIG: watch
+- Dockerfile : FRANKENPHP_WORKER_CONFIG=watch
